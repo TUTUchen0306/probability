@@ -29,6 +29,7 @@ ls = 0.06
 
 covariance_train = [[0] * X_train.shape[0] for i in range(X_train.shape[0])]
 covariance_test = [[0] * X_train.shape[0] for i in range(X_test.shape[0])]
+
 for i in range(X_train.shape[0]):
 	for j in range(X_train.shape[0]):
 		if i == j:
@@ -44,15 +45,7 @@ for i in range(X_test.shape[0]):
 	inv = np.linalg.inv(covariance_train[:][:] + sigma ** 2 * np.identity(X_train.shape[0]))
 	y1toN  = np.matmul(inv,np.transpose(Y_train[:]))
 	predictive_mean[i] = np.matmul(covariance_test[i][:],y1toN)
-	predictive_std[i] = sigma_f ** 2 + sigma ** 2 - np.matmul(covariance_test[i][:],np.matmul(inv,np.transpose(covariance_test[i][:])))
-
-for i in range(Y_test.shape[0]):
-	print("Y_t", Y_test[i])
-	print("PT", predictive_mean[i])
-
-
-
-
+	predictive_std[i] = math.sqrt(sigma_f ** 2 + sigma ** 2 - np.matmul(covariance_test[i][:],np.matmul(inv,np.transpose(covariance_test[i][:]))))
 
 	 
 

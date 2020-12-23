@@ -16,5 +16,7 @@ def monte_carlo(n_sample):
 	return np.mean(val_list) * 4
 
 MAX_SAMPLE = 10000000
-x = monte_carlo(MAX_SAMPLE)
-print(x)
+time = 5
+for i in range(time) :
+	x = monte_carlo(MAX_SAMPLE)
+	print(x)

@@ -3,7 +3,7 @@ import math
 
 
 def func(x):
-	return math.cos(x) + math.sin(2*x);
+	return math.cos(x) + math.sin(2*x)
 
 def monte_carlo(n_sample, mu, sigma):
 	val_lst = []
